@@ -2,3 +2,12 @@ binder_call(system_app, zygote)
 
 # FM Radio app
 get_prop(system_app, vendor_fm_radio_app_prop);
+
+# Battery Health
+allow system_app vendor_sysfs_battery_supply:dir { search };
+allow system_app vendor_sysfs_battery_supply:file { read };
+allow system_app vendor_sysfs_battery_supply:file { open };
+allow system_app vendor_sysfs_battery_supply:file { getattr };
+allow system_app sysfs_battery_supply:dir { search };
+allow system_app sysfs_battery_supply:file { read open getattr };
+r_dir_file(system_app, vendor_sysfs_battery_supply)
